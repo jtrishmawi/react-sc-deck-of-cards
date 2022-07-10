@@ -14,6 +14,6 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     height: 100vh;
-    font-family: "Cinzel Decorative";
+    font-family: ${({ theme }) => theme.fonts[0]};
   }
 `;

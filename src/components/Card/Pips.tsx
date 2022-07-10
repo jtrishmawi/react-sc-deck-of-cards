@@ -1,26 +1,21 @@
 import styled from "styled-components";
-import { CardProps } from "./index";
 import { Pip } from "./Pip";
-import { cardStyles } from "../../styles/cards";
+import { cardStyles } from "./cardStyles";
 
-type PipsProps = {
+type PipsProps = Card & {
   number: number;
-  value: CardProps["value"];
-  suit: CardProps["suit"];
 };
 
-const Container = styled.div<{ number: number }>(({ number }) => {
-  let styles = `
+const Container = styled.div<{ number: number }>(
+  ({ number }) => `
   display: grid;
   align-items: stretch;
   grid-template-columns: repeat(3, calc(13vmin / 3));
   grid-template-rows: repeat(8, 1fr);
   width: 100%;
   grid-auto-flow: column;
-  ${cardStyles[number - 1]}
-  `;
-  return styles;
-});
+  ${cardStyles[number - 1]}`
+);
 
 export const Pips = ({ number, value, suit }: PipsProps) => {
   if (value === "A") number = 1;

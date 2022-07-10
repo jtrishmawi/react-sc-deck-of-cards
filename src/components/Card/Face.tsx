@@ -1,10 +1,4 @@
 import styled from "styled-components";
-import { CardProps } from "./index";
-
-type FaceProps = {
-  value: CardProps["value"];
-  suit: CardProps["suit"];
-};
 
 const Letter = styled.div`
   font-size: 8vmin;
@@ -28,7 +22,7 @@ const Container = styled.div`
   }
 `;
 
-export const Face = ({ value, suit }: FaceProps) => {
+export const Face = ({ value, suit }: Card) => {
   if (value === "A" || !isNaN(parseInt(value, 10))) return null;
 
   return (

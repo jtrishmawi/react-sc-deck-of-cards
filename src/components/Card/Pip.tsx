@@ -1,18 +1,21 @@
 import styled from "styled-components";
-import { CardProps } from "./index";
 import { Clubs, Diamonds, Hearts, Spades } from "./suits";
 
 type PipProps = {
-  suit: CardProps["suit"];
+  suit: Suit;
   i: number;
 };
 
-const Container = styled.div<{ i: number }>`
+const Container = styled.div<PipProps>`
   width: 100%;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   grid-row: span 2;
+  fill: ${({ suit, theme }) =>
+    ["diamonds", "hearts"].includes(suit)
+      ? theme.colors.red
+      : theme.colors.black};
   /* outline: 1px solid green;
   &::before {
     content: '${({ i }) => i}';
@@ -36,5 +39,9 @@ export const Pip = ({ suit, i }: PipProps) => {
         return <>{suit}</>;
     }
   };
-  return <Container i={i}>{renderPip()}</Container>;
+  return (
+    <Container i={i} suit={suit}>
+      {renderPip()}
+    </Container>
+  );
 };

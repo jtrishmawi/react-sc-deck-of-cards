@@ -12,4 +12,10 @@ type Value =
   | "Q"
   | "K"
   | "A";
-type Suit = "clubs" | "diamonds" | "hearts" | "spades ";
+
+type Suit = "clubs" | "diamonds" | "hearts" | "spades";
+
+type Card = {
+  suit: Suit;
+  value: Value;
+};

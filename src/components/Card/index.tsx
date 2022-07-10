@@ -16,35 +16,35 @@ export const values = [
   "J",
   "Q",
   "K",
-  "A"
+  "A",
 ] as const;
 
-export type CardProps = {
-  suit: typeof suits[number];
-  value: typeof values[number];
-};
-
-const Container = styled.div<{ suit: CardProps["suit"] }>`
+const Container = styled.div<{ suit: Suit }>`
   flex: 0 0 auto;
   width: 20vmin;
   aspect-ratio: 58/89;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.25);
   display: grid;
   grid-template-columns: 15fr 70fr 15fr;
   padding: 1vmin;
-  /* color: ${({ suit }) =>
-    ["diamonds", "hearts"].includes(suit) ? "red" : ""}; */
+  color: ${({ suit, theme }) =>
+    ["diamonds", "hearts"].includes(suit)
+      ? theme.colors.red
+      : theme.colors.black};
+  background: ${({ theme }) => theme.colors.background};
+  font-family: ${({ theme }) => theme.fonts[1]};
+  border-radius: 0.5rem;
+  outline: 1px solid ${({ theme }) => theme.colors.black};
 `;
 
 const Value = styled.div<{ isBottom?: boolean }>`
   font-weight: bold;
   font-size: 2.5vmin;
   text-align: center;
-  transform: ${(props) => (props.isBottom ? "rotate(180deg)" : "none")};
+  transform: ${({ isBottom }) => (isBottom ? "rotate(180deg)" : "none")};
   width: 2.5vmin;
 `;
 
-export const Card = ({ suit, value }: CardProps) => {
+export const Card = ({ suit, value }: Card) => {
   return (
     <Container suit={suit}>
       <Value>{value}</Value>
