@@ -10,6 +10,7 @@ const Navbar = styled.nav`
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
+  z-index: 1;
 `;
 
 const Header = styled.h1`

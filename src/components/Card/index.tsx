@@ -2,23 +2,6 @@ import styled from "styled-components";
 import { Pips } from "./Pips";
 import { Face } from "./Face";
 
-export const suits = ["clubs", "diamonds", "hearts", "spades"] as const;
-export const values = [
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K",
-  "A",
-] as const;
-
 const Container = styled.div<{ suit: Suit }>`
   flex: 0 0 auto;
   width: 20vmin;
@@ -27,9 +10,7 @@ const Container = styled.div<{ suit: Suit }>`
   grid-template-columns: 15fr 70fr 15fr;
   padding: 1vmin;
   color: ${({ suit, theme }) =>
-    ["diamonds", "hearts"].includes(suit)
-      ? theme.colors.red
-      : theme.colors.black};
+    ["♦", "♥"].includes(suit) ? theme.colors.red : theme.colors.black};
   background: ${({ theme }) => theme.colors.background};
   font-family: ${({ theme }) => theme.fonts[1]};
   border-radius: 0.5rem;

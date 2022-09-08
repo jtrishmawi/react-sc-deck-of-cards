@@ -13,7 +13,7 @@ type Value =
   | "K"
   | "A";
 
-type Suit = "clubs" | "diamonds" | "hearts" | "spades";
+type Suit = "♠️" | "♥" | "♦" | "♣";
 
 type Card = {
   suit: Suit;

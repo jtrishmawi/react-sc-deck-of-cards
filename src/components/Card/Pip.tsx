@@ -13,9 +13,7 @@ const Container = styled.div<PipProps>`
   place-items: center;
   grid-row: span 2;
   fill: ${({ suit, theme }) =>
-    ["diamonds", "hearts"].includes(suit)
-      ? theme.colors.red
-      : theme.colors.black};
+    ["♦", "♥"].includes(suit) ? theme.colors.red : theme.colors.black};
   /* outline: 1px solid green;
   &::before {
     content: '${({ i }) => i}';
@@ -27,13 +25,13 @@ const Container = styled.div<PipProps>`
 export const Pip = ({ suit, i }: PipProps) => {
   const renderPip = () => {
     switch (suit) {
-      case "clubs":
+      case "♣":
         return <Clubs />;
-      case "diamonds":
+      case "♦":
         return <Diamonds />;
-      case "hearts":
+      case "♥":
         return <Hearts />;
-      case "spades":
+      case "♠️":
         return <Spades />;
       default:
         return <>{suit}</>;
